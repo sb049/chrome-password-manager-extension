@@ -12,13 +12,13 @@ chrome.webNavigation.onCompleted.addListener(({ tabId, frameId }) => {
 })
 
 const newPageLoad = async () => {
-    let inputs = document.getElementsByTagName("input");
+    let inputs = document.getElementsByTagName("crm-login");
     const inputLength = inputs.length;
     for (let i = 0; i < inputLength; i++) {
         const input = inputs.item(i);
         if (input.type !== "password") continue;
 
-        const { passwords } = await chrome.storage.sync.get("passwords"); 
+        const { passwords } = await chrome.storage.sync.get("Password"); 
         const pagePassword = passwords.find(password => password.url === location.href);
 
         if (pagePassword !== undefined) {
